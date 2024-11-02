@@ -25,7 +25,7 @@ const HomeScreen = ({ navigation }) => {
 
   const handleAdd = () => {
     navigation.navigate('AlertScreen');
-  };;
+  };
 
   return (
     <View style={styles.container}>
@@ -47,7 +47,7 @@ const HomeScreen = ({ navigation }) => {
           <Icon name="search" size={30} />
           <Text style={styles.buttonText}>Explora</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={() => handleNavigateTo('Perfil')}>
+        <TouchableOpacity style={styles.button} onPress={() => handleNavigateTo('ProfileScreen')}>
           <Icon name="person" size={30} />
           <Text style={styles.buttonText}>Perfil</Text>
         </TouchableOpacity>
