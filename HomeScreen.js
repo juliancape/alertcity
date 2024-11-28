@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, TextInput, FlatList, Keyboard, Alert } from 'react-native';
-import { db, auth } from './firebase/firebaseConfig';
+import { db, auth } from './firebase/firebaseConfig'; // Firebase para base de datos y autenticacion
 const { collection, getDocs } = require("firebase/firestore");
-import { signOut } from "firebase/auth";
+import { signOut } from "firebase/auth"; // Para cerrar sesion
 import Icon from 'react-native-vector-icons/Ionicons';
 import MapView, { Marker } from 'react-native-maps';
 
@@ -11,6 +11,7 @@ const HomeScreen = ({ navigation }) => {
   const [alerts, setAlerts] = useState([]);
   const [isKeyboardVisible, setIsKeyboardVisible] = useState(false);
 
+  // Obtiene las alertas desde Firestore al cargar el componente
   useEffect(() => {
     const fetchAlerts = async () => {
       try {
@@ -19,12 +20,13 @@ const HomeScreen = ({ navigation }) => {
           id: doc.id,
           ...doc.data(),
         }));
-        setAlerts(alertsData);
+        setAlerts(alertsData); // Actualiza el estado con las alertas
       } catch (error) {}
     };
     fetchAlerts();
   }, []);
 
+  // Detecta cuando el teclado se muestra u oculta
   useEffect(() => {
     const keyboardDidShowListener = Keyboard.addListener(
       'keyboardDidShow',
@@ -41,22 +43,26 @@ const HomeScreen = ({ navigation }) => {
     };
   }, []);
 
+  // Cierra sesion y redirige a la pantalla de inicio de sesion
   const handleSignOut = () => {
     signOut(auth)
       .then(() => navigation.replace('Login'))
       .catch(error => Alert.alert("Error", "No se pudo cerrar sesión. Inténtalo de nuevo más tarde."));
   };
 
+  // Navega a la pantalla para crear una nueva alerta
   const handleAdd = () => {
     navigation.navigate('AlertScreen');
   };
 
+  // Navega a pantallas adicionales como "Explora" o "Perfil"
   const handleNavigateTo = (screen) => {
     navigation.navigate(screen, { alerts });
   };
 
   return (
     <View style={styles.container}>
+      {/* Mapa que muestra las ubicaciones de las alertas */}
       <MapView 
         style={styles.map} 
         initialRegion={{
@@ -66,6 +72,7 @@ const HomeScreen = ({ navigation }) => {
           longitudeDelta: 0.1,
         }}
       >
+        {/* Muestra marcadores de las alertas */}
         {alerts.map(alert => (
           alert.selectedLocation &&
           typeof alert.selectedLocation.latitude === 'number' &&
@@ -83,6 +90,7 @@ const HomeScreen = ({ navigation }) => {
         ))}
       </MapView>
 
+      {/* Input para buscar y boton para agregar nuevas alertas */}
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
@@ -95,6 +103,7 @@ const HomeScreen = ({ navigation }) => {
         </TouchableOpacity>
       </View>
 
+      {/* Lista de alertas */}
       <FlatList
         data={alerts}
         keyExtractor={(item) => item.id}
@@ -107,6 +116,7 @@ const HomeScreen = ({ navigation }) => {
         )}
       />
 
+      {/* Footer con opciones de navegacion */}
       {!isKeyboardVisible && (
         <View style={styles.footer}>
           <TouchableOpacity style={styles.button} onPress={() => handleNavigateTo('ExploreScreen')}>
