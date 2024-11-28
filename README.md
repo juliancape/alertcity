@@ -5,7 +5,7 @@ Desarrollo de Aplicaciones Móviles
 **Alertcity**  
 Julian Cardenas
 </center>
-
+ 
 ## Funcionalidades
 
 ### Pantallas principales
