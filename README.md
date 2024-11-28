@@ -57,3 +57,25 @@ Julian Cardenas
    - Firestore para almacenamiento de alertas.
 6. **react-native-vector-icons**: Para los íconos de la interfaz.
 7. **react**: Manejo de componentes y estado.
+
+# Capturas de Pantalla
+
+A continuación, se muestran las capturas de pantalla del proyecto:
+
+## Register Screen
+![Register Screen](pantallazos/RegisterScreen.jpeg)
+
+## Login Screen
+![Login Screen](pantallazos/LoginScreen.jpeg)
+
+## Home Screen
+![Home Screen](pantallazos/HomeScreen.jpeg)
+
+## Alert Screen
+![Alert Screen](pantallazos/AlertScreen.jpeg)
+
+## Explore Screen
+![Explore Screen](pantallazos/ExploreScreen.jpeg)
+
+## Profile Screen
+![Profile Screen](pantallazos/ProfileScreen.jpeg)
