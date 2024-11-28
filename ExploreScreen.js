@@ -7,7 +7,6 @@ const ExploreScreen = ({ route }) => {
   const renderAlertItem = ({ item }) => (
     <View style={styles.alertCard}>
       <Text style={styles.alertTitle}>{item.title}</Text>
-      <Text style={styles.alertSubtitle}>Categoría: {item.category}</Text>
       <Text style={styles.alertDescription}>Descripción: {item.description}</Text>
       <Text style={styles.alertLocation}>
         Ubicación: {item.selectedLocation ? `${item.selectedLocation.latitude}, ${item.selectedLocation.longitude}` : 'No especificada'}

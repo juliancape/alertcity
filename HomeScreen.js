@@ -84,7 +84,7 @@ const HomeScreen = ({ navigation }) => {
                 longitude: alert.selectedLocation.longitude,
               }}
               title={alert.title}
-              description={`Categoría: ${alert.category}\nDescripción: ${alert.description}`}
+              description={`Descripción: ${alert.description}`}
             />
           )
         ))}
@@ -110,7 +110,6 @@ const HomeScreen = ({ navigation }) => {
         renderItem={({ item }) => (
           <View style={styles.alertContainer}>
             <Text style={styles.alertTitle}>{item.title}</Text>
-            <Text style={styles.alertText}>Categoría: {item.category}</Text>
             <Text style={styles.alertText}>Descripción: {item.description}</Text>
           </View>
         )}
